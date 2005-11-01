@@ -1,0 +1,31 @@
+/**
+ *$Id$
+ */
+
+service.staticUpload {
+	scp_www_example_com {
+		server = 127.0.0.1
+		username = root
+		path_to_php = /usr/bin
+		path_to_scp = /usr/bin
+		options =
+		local_dir = /srv/www.example.com/publish/* /srv/www.example.com/publish/fileadmin /srv/www.example.com/publish/uploads /srv/www.example.com/publish/typo3temp
+		remote_dir = /tmp
+		logfile_dir = /var/log/
+		service = scp
+		email = info@example.com
+	}
+	winscp_www_example_com {
+		server = 127.0.0.1
+		username = root
+		path_to_php = C:/apache/php/cli/
+		path_to_scp = C:/Programme/WinSCP3/
+		options = /ini="C:\Dokumente und Einstellungen\Example\Desktop\WinSCP3-test.ini"
+		change_local_dir = "C:\apache\htdocs\www.example.com\"
+		local_dir = "publish\*" "fileadmin" "uploads" "typo3temp"
+		remote_dir = /tmp
+		logfile_dir = C:/apache/logs/
+		service = scp
+		email = info@example.com
+	}
+}
