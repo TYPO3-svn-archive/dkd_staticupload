@@ -1,0 +1,79 @@
+a:2:{s:4:"meta";a:3:{s:5:"title";s:12:"staticUpload";s:5:"descr";s:0:"";s:7:"options";a:2:{s:10:"usageCount";s:1:"1";s:19:"includeCodeAbstract";s:1:"1";}}s:5:"files";a:1:{s:14:"MD5_19aaeae789";a:5:{s:8:"filename";s:14:"mod1/index.php";s:8:"filesize";i:6989;s:6:"header";a:5:{s:4:"text";s:69:"
+
+Module 'd.k.d Static Upload' for the 'dkd_staticupload' extension.
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:1:{i:0;s:42:"@author	Andreas Otto <andreas.otto@dkd.de>";}s:11:"other_index";a:1:{s:7:"@author";a:1:{i:0;s:34:"Andreas Otto <andreas.otto@dkd.de>";}}}s:3:"DAT";a:7:{i:1;a:7:{s:6:"header";s:55:"class tx_dkdstaticupload_module1 extends t3lib_SCbase {";s:5:"class";i:1;s:11:"parentClass";s:26:"tx_dkdstaticupload_module1";s:7:"content";a:2:{i:0;s:18:"	var $pageinfo;
+
+	";i:1;i:-1;}s:12:"content_size";i:18;s:13:"content_lines";i:2;s:6:"atLine";i:57;}i:3;a:7:{s:6:"header";s:17:"function init()	{";s:11:"parentClass";s:26:"tx_dkdstaticupload_module1";s:4:"cDat";a:3:{s:4:"text";s:1:"
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}}s:7:"content";a:2:{i:0;s:222:"		global $BE_USER,$LANG,$BACK_PATH,$TCA_DESCR,$TCA,$CLIENT,$TYPO3_CONF_VARS;
+
+		parent::init();
+
+		/*
+		if (t3lib_div::_GP("clear_all_cache"))	{
+			$this->include_once[]=PATH_t3lib."class.t3lib_tcemain.php";
+		}
+		*/
+	}
+
+	";i:1;i:0;}s:12:"content_size";i:222;s:13:"content_lines";i:11;s:6:"atLine";i:63;}i:5;a:7:{s:6:"header";s:23:"function menuConfig()	{";s:11:"parentClass";s:26:"tx_dkdstaticupload_module1";s:4:"cDat";a:3:{s:4:"text";s:75:"
+
+Adds items to the ->MOD_MENU array. Used for the function menu selector.
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}}s:7:"content";a:2:{i:0;s:383:"		global $LANG;
+		$this->MOD_MENU = Array (
+			"function" => Array (
+				"1" => $LANG->getLL("function1"),
+				"2" => $LANG->getLL("function2"),
+				"3" => $LANG->getLL("function3"),
+			)
+		);
+		parent::menuConfig();
+	}
+
+		// If you chose "web" as main module, you will need to consider the $this->id parameter which will contain the uid-number of the page clicked in the page tree
+	";i:1;i:0;}s:12:"content_size";i:383;s:13:"content_lines";i:12;s:6:"atLine";i:80;}i:7;a:7:{s:6:"header";s:17:"function main()	{";s:11:"parentClass";s:26:"tx_dkdstaticupload_module1";s:4:"cDat";a:3:{s:4:"text";s:67:"
+
+Main function of the module. Write the content to $this->content
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}}s:7:"content";a:2:{i:0;s:396:"		global $BE_USER,$LANG,$BACK_PATH,$TCA_DESCR,$TCA,$CLIENT,$TYPO3_CONF_VARS;
+
+		// Access check!
+		// The page will show only if there is a valid page and if this page may be viewed by the user
+		$this->pageinfo = t3lib_BEfunc::readPageAccess($this->id,$this->perms_clause);
+		$access = is_array($this->pageinfo) ? 1 : 0;
+
+		if (($this->id && $access) || ($BE_USER->user["admin"] && !$this->id))	";i:1;i:0;}s:12:"content_size";i:396;s:13:"content_lines";i:7;s:6:"atLine";i:98;}i:9;a:6:{s:6:"header";s:25:"function jumpToUrl(URL)	{";s:11:"parentClass";s:26:"tx_dkdstaticupload_module1";s:7:"content";a:2:{i:0;s:507:"						document.location = URL;
+					}
+				</script>
+			';
+			$this->doc->postCode='
+				<script language="javascript" type="text/javascript">
+					script_ended = 1;
+					if (top.fsMod) top.fsMod.recentIds["web"] = '.intval($this->id).';
+				</script>
+			';
+
+			$headerSection = $this->doc->getHeader("pages",$this->pageinfo,$this->pageinfo["_thePath"])."<br>".$LANG->sL("LLL:
+[...]
+header($LANG->getLL("title"));
+			$this->content.=$this->doc->spacer(5);
+			$this->content.=$this->doc->spacer(10);
+		}
+	}
+
+	";i:1;i:1;}s:12:"content_size";i:1570;s:13:"content_lines";i:43;s:6:"atLine";i:117;}i:11;a:4:{s:6:"header";s:25:"function printContent()	{";s:11:"parentClass";s:26:"tx_dkdstaticupload_module1";s:4:"cDat";a:3:{s:4:"text";s:29:"
+
+Prints out the module HTML
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}}s:6:"atLine";i:166;}i:13;a:7:{s:6:"header";s:26:"function moduleContent()	{";s:11:"parentClass";s:26:"tx_dkdstaticupload_module1";s:4:"cDat";a:3:{s:4:"text";s:31:"
+
+Generates the module content
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}}s:7:"content";a:2:{i:0;s:507:"		switch((string)$this->MOD_SETTINGS["function"])	{
+			case 1:
+				$content="<div align=center><strong>Hello World!</strong></div><BR>
+					The 'Kickstarter' has made this module automatically, it contains a default framework for a backend module but apart from it does nothing useful until you open the script '".substr(t3lib_extMgm::extPath("dkd_staticupload"),strlen(PATH_
+[...]
+ Include files?
+foreach($SOBE->include_once as $INC_FILE)	include_once($INC_FILE);
+
+$SOBE->main();
+$SOBE->printContent();
+
+?>";i:1;i:1;}s:12:"content_size";i:1483;s:13:"content_lines";i:42;s:6:"atLine";i:177;}}s:10:"usageCount";a:7:{s:12:"H_42c747d4d1";a:4:{s:3:"ALL";a:2:{s:12:"makeinstance";i:1;s:5:"TOTAL";i:1;}s:14:"MD5_19aaeae789";a:3:{s:8:"fileName";s:14:"mod1/index.php";s:12:"makeinstance";i:1;s:5:"TOTAL";i:1;}s:24:"_searchtime_milliseconds";d:24;s:15:"_functionHeader";s:55:"class tx_dkdstaticupload_module1 extends t3lib_SCbase {";}s:12:"H_7c6ff40199";a:4:{s:3:"ALL";a:3:{s:11:"objectUsage";i:1;s:5:"TOTAL";i:2;s:14:"nonObjectUsage";i:1;}s:14:"MD5_19aaeae789";a:4:{s:8:"fileName";s:14:"mod1/index.php";s:11:"objectUsage";i:1;s:5:"TOTAL";i:2;s:14:"nonObjectUsage";i:1;}s:24:"_searchtime_milliseconds";d:9;s:15:"_functionHeader";s:17:"function init()	{";}s:12:"H_759a824b85";a:4:{s:3:"ALL";a:2:{s:14:"nonObjectUsage";i:1;s:5:"TOTAL";i:1;}s:14:"MD5_19aaeae789";a:3:{s:8:"fileName";s:14:"mod1/index.php";s:14:"nonObjectUsage";i:1;s:5:"TOTAL";i:1;}s:24:"_searchtime_milliseconds";d:4;s:15:"_functionHeader";s:23:"function menuConfig()	{";}s:12:"H_9c2550bb82";a:4:{s:3:"ALL";a:2:{s:11:"objectUsage";i:1;s:5:"TOTAL";i:1;}s:14:"MD5_19aaeae789";a:3:{s:8:"fileName";s:14:"mod1/index.php";s:11:"objectUsage";i:1;s:5:"TOTAL";i:1;}s:24:"_searchtime_milliseconds";d:6;s:15:"_functionHeader";s:17:"function main()	{";}s:12:"H_0a54405331";a:2:{s:24:"_searchtime_milliseconds";d:3;s:15:"_functionHeader";s:25:"function jumpToUrl(URL)	{";}s:12:"H_a337945941";a:4:{s:3:"ALL";a:2:{s:11:"objectUsage";i:1;s:5:"TOTAL";i:1;}s:14:"MD5_19aaeae789";a:3:{s:8:"fileName";s:14:"mod1/index.php";s:11:"objectUsage";i:1;s:5:"TOTAL";i:1;}s:24:"_searchtime_milliseconds";d:9;s:15:"_functionHeader";s:25:"function printContent()	{";}s:12:"H_2bf59c198a";a:4:{s:3:"ALL";a:2:{s:11:"objectUsage";i:1;s:5:"TOTAL";i:1;}s:14:"MD5_19aaeae789";a:3:{s:8:"fileName";s:14:"mod1/index.php";s:11:"objectUsage";i:1;s:5:"TOTAL";i:1;}s:24:"_searchtime_milliseconds";d:7;s:15:"_functionHeader";s:26:"function moduleContent()	{";}}}}}
